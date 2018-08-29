@@ -17,6 +17,7 @@ export class SearchBar extends React.Component{
 
     onSelect = (value) => {
         console.log('onSelect', value);
+        this.props.loadPlayerInfo(value);
     }
 
     render() {
@@ -26,7 +27,7 @@ export class SearchBar extends React.Component{
                 className = "search-bar"
                 dataSource={dataSource}
                 size="large"
-                onSelect={onSelect}
+                onSelect={this.onSelect}
                 onSearch={this.handleSearch}
                 placeholder="Search NBA player"
             >

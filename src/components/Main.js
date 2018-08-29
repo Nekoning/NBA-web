@@ -13,7 +13,11 @@ export class Main extends React.Component {
     }
 
     componentDidMount() {
-        nba.stats.playerInfo({ PlayerID: nba.findPlayer('Stephen Curry').playerId }).then((info) => {
+        this.loadPlayerInfo("Stephen Curry");
+    }
+
+    loadPlayerInfo = (playerName) => {
+        nba.stats.playerInfo({ PlayerID: nba.findPlayer(playerName).playerId }).then((info) => {
             console.log(info);
             const playerInfo = Object.assign(info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
             console.log(playerInfo);
@@ -24,7 +28,7 @@ export class Main extends React.Component {
     render() {
         return (
             <div className="main">
-                <SearchBar />
+                <SearchBar loadPlayerInfo={this.loadPlayerInfo}/>
                 <div className="player">
                     <Profile playerInfo={this.state.playerInfo}/>
                     <DataViewContainer playerId={this.state.playerInfo.playerId}/>
