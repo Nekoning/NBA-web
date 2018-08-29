@@ -3,13 +3,11 @@ import { DataViewContainer } from './DataViewContainer';
 import nba from 'nba'
 import { Profile } from './Profile';
 import { SearchBar } from "./SearchBar";
+import { DEFAULT_PLAYER_INFO } from "../constants"
 
 export class Main extends React.Component {
     state = {
-        playerInfo: {
-            playerId: nba.findPlayer('Stephen Curry').playerId,
-            teamAbbreviation: 'GSW',
-        }
+        playerInfo: DEFAULT_PLAYER_INFO
     }
 
     componentDidMount() {
